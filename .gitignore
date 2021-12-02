@@ -1,0 +1,9 @@
+catboost_info/
+__pycache__/
+NISQA/
+.ipynb_checkpoints/
+*.wav
+*.mp4
+*.p
+/lightning_logs/
+*.csv
