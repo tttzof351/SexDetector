@@ -40,12 +40,12 @@ def download_original_dataset(
                 
 def wav2vec_path(path):
     name = path.split("/")[-1].replace(".wav", ".p")
-    pickle_path = f"./wav2vec/{name}"
+    pickle_path = f"../wav2vec/{name}"
     return pickle_path
 
 def vgg_path(path):
     name = path.split("/")[-1].replace(".wav", ".p")
-    pickle_path = f"./vgg/{name}"
+    pickle_path = f"../vgg/{name}"
     return pickle_path
 
 def pickle_load(path):
@@ -140,10 +140,11 @@ def plot_spec(path):
     import matplotlib.pyplot as plt
     
     print(path)
+    plt.figure(figsize=(12, 6), dpi=80)
     transform = torchaudio.transforms.Spectrogram(n_fft=300, normalized=True, return_complex=False)
     waveform, sample_rate = torchaudio.load(path, normalize=True)
     spectrogram = transform(waveform).log2()[0, :, :]
-    plt.xlabel("time")
+    plt.xlabel("~time")
     plt.ylabel("~freq")
     plt.imshow(spectrogram.numpy(), origin='lower')    
     
@@ -152,3 +153,4 @@ def load_json(path):
     import json
     with open(path) as json_file:
         return json.load(json_file)
+
